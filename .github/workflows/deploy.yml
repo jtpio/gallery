@@ -17,3 +17,7 @@ jobs:
           sudo /opt/tljh/hub/bin/python3 -m pip list
           # sudo systemctl restart jupyterhub.service
           sudo systemctl status jupyterhub.service
+
+    - name: Check status https://voila-gallery.org
+      run: |
+        curl -sSf http://localhost:8000 > /dev/null
