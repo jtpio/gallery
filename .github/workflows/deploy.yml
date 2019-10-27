@@ -18,6 +18,7 @@ jobs:
           # sudo systemctl restart jupyterhub.service
           sudo systemctl status jupyterhub.service
 
-    - name: Check status https://voila-gallery.org
+    - name: Check voila-gallery.org is reachable
       run: |
-        curl -sSf http://localhost:8000 > /dev/null
+        sleep 5
+        curl -sSf https://voila-gallery.org > /dev/null
