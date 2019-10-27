@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run sample command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GALLERY_HOST }}
+        username: ${{ secrets.GALLERY_USERNAME }}
+        key: ${{ secrets.GALLERY_SSH_PRIVATE_KEY }}
+        script: whoami
