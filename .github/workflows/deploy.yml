@@ -1,18 +1,22 @@
-name: CI
+name: Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run sample command
+    - name: Deploy the Voila Gallery
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.GALLERY_HOST }}
         username: ${{ secrets.GALLERY_USERNAME }}
         key: ${{ secrets.GALLERY_SSH_PRIVATE_KEY }}
         script: |
+          # sudo /opt/tljh/hub/bin/python3 -m pip install -U  git+https://github.com/voila-dashboards/gallery@master#"egg=tljh-voila-gallery&subdirectory=tljh-voila-gallery"
+          # sudo systemctl restart jupyterhub.service
           sudo systemctl status jupyterhub.service
